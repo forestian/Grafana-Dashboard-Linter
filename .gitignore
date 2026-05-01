@@ -1,0 +1,20 @@
+.gocache/
+.gomodcache/
+dashboard-lint-demo/
+report.md
+lint-report.json
+generated/
+test-output/
+gdlint
+gdlint.exe
+
+# Local environment and secrets
+.env
+.env.*
+*.env
+*token*
+*secret*
+*credential*
+*credentials*
+*kubeconfig*
+kubeconfig
