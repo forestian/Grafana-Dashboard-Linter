@@ -157,11 +157,23 @@ jobs:
           cd dist
           sha256sum *.tar.gz > checksums.txt
 
-      - name: Upload release assets
+      - name: Upload assets to existing release
+        if: github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload "${{ needs.verify.outputs.version }}" \
+            dist/*.tar.gz \
+            dist/checksums.txt \
+            --clobber
+
+      - name: Create release and upload assets
+        if: github.event_name != 'workflow_dispatch'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.verify.outputs.version }}
-          name: ${{ needs.verify.outputs.version }}
           files: |
             dist/*.tar.gz
             dist/checksums.txt
