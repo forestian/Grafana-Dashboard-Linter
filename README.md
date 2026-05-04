@@ -20,6 +20,26 @@ To install into your Go bin directory:
 go install .
 ```
 
+## Install from GitHub Releases
+
+Download a prebuilt binary from the GitHub Releases page.
+
+Linux/macOS:
+
+```sh
+tar -xzf <archive>.tar.gz
+chmod +x gdlint
+./gdlint version
+```
+
+Windows:
+
+Download the Windows archive, extract it, and run:
+
+```powershell
+gdlint.exe version
+```
+
 ## Commands
 
 ```sh
